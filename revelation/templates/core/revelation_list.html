@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-md-12">
+        {% if object_list %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Subject</th>
+                        {% if show_user %}
+                            <th>User</th>
+                        {% endif %}
+                        <th>Revelation date</th>
+                        <th>Visible now?</th>
+                        <th>Created</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'revelation-view' object.pk %}">
+                                    {{ object.subject }}
+                                </a>
+                            </td>
+                            {% if show_user %}
+                                <td>
+                                    {% if object.user %}
+                                        <a href="{% url 'user-view' object.user.id %}">
+                                    {% endif %}
+                                    {{ object.user|default_if_none:"-" }}
+                                    {% if object.user %}
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                            <td>{{ object.datetime }}</td>
+                            <td>
+                            <span class="label label-{% if object.is_time_visible %}success{% else %}danger{% endif %}">
+                                {{ object.is_time_visible|yesno:"Yes,No" }}
+                            </span>
+                            </td>
+                            <td>{{ object.created|timesince }} ago</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <h2 class="text-center">Nothing here so far!</h2>
+        {% endif %}
+    </div>
+</div>
+
+
+{% if is_paginated %}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-5">
+
+            <ul class="pagination pagination-centered">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page=1"><<</a></li>
+                    <li>
+                        <a href="?page={{ page_obj.previous_page_number }}"><</a>
+                    </li>
+                {% endif %}
+
+                {% for i in paginator.page_range %}
+                    <li {% if page_obj.number == i %}
+                        class="active" {% endif %}><a
+                            href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li>
+                        <a href="?page={{ page_obj.next_page_number }}">></a>
+                    </li>
+                    <li>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">>></a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+{% endif %}

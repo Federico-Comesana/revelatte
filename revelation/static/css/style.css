@@ -1,0 +1,16 @@
+.brand-font {
+    font-family: 'Amatic SC', cursive;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.jumbotron-home {
+    background: #155799 linear-gradient(120deg, #155799, #159957);
+    color: #fff;
+}
+
+.titanic {
+    float: none;
+}

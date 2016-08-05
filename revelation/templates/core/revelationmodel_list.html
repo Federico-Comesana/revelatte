@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} - Public Directory{% endblock %}
+
+{% block main %}
+
+    <div class="revelation-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Directory
+                            <small>{{ object_list.count }} public revelations.</small>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            {% include "core/revelation_list.html" with show_user=True %}
+        </div>
+    </div>
+
+{% endblock %}

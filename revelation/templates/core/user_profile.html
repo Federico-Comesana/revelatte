@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} - {{ profile }}'s Profile{% endblock %}
+
+{% block main %}
+
+    <div class="revelation-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>{{ profile }}'s profile
+                            <small>{{ object_list.count }} public revelations
+                                by {{ profile }}.
+                            </small>
+                        </h1>
+                    </div>
+
+                    <p>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        Joined {{ profile.date_joined|date:"M Y" }}
+                    </p>
+
+                </div>
+            </div>
+            {% include "core/revelation_list.html" %}
+        </div>
+    </div>
+
+{% endblock %}

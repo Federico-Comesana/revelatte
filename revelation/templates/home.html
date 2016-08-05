@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block main %}
+
+    <div class="revelation-main">
+
+        <div class="jumbotron jumbotron-home">
+            <div class="container">
+                <h1 class="brand-font">Revelatte <i class="fa fa-coffee"></i>
+                </h1>
+
+                <p>
+                    Revelatte is the best place to share and enjoy the most
+                    awesome public announcements on the Internet. Entertain,
+                    inspire and amaze people around the world with funny,
+                    heartwarming or shocking content in a few seconds.
+                </p>
+
+                <p>
+                    <a class="btn btn-primary btn-lg"
+                       href="{% url 'revelation-list' %}"
+                       role="button">
+                        <span class="glyphicon glyphicon-book"
+                              aria-hidden="true"></span>
+                        Browse public directory
+                    </a>
+
+                    <a class="btn btn-danger btn-lg"
+                       href="{% url 'revelation-create' %}"
+                       role="button">
+                        <span class="glyphicon glyphicon-fire"
+                              aria-hidden="true"></span>
+                        Start using it now!
+                    </a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>How does it work?</h2>
+
+                    <p>Write something, pick an image, video, link or whatever
+                        is on your mind. Set a revelation date and hit submit.
+                        A link is generated and you can share it around the
+                        internet. The content of your revelation is displayed
+                        only after the date set has passed, otherwise it will
+                        show a countdown. Simple right?
+                        <strong>Registration is not required!</strong></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Who is using it?</h2>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <h3>People</h3>
+
+                    <p>A revelation is the best way to tell people you are
+                        expecting a new family member, getting out of the closet
+                        or revealing stuff people don't know about you. It's
+                        easy and fun to use. You should give it a try!</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Companies</h3>
+
+                    <p>How about the secret location of your next underground
+                        event? Revelatte helps business owners to reveal new
+                        products, special offers and keep their customers
+                        thrilled with new features.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Futurists</h3>
+
+                    <p>Think you can tell the future? Already know who is going
+                        to win the elections? Create a new revelation
+                        right now and prove it to your friends.</p>
+                </div>
+            </div>
+
+            {% comment %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>Samples</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                Basic panel example
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endcomment %}
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

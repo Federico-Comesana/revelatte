@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/jquery.simple-dtpicker.css' %}"
+          type="text/css"/>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ form.media }}
+
+    <script src="{% static 'js/jquery.simple-dtpicker.js' %}"></script>
+
+    <script type="text/javascript">
+        $('#id_datetime').appendDtpicker({
+            "autodateOnStart": false
+        });
+    </script>
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="revelation-main">
+        <div class="container">
+
+            <!-- Example row of columns -->
+            <div class="row">
+
+                <div class="page-header">
+                    <h1>New revelation</h1>
+                </div>
+
+                <div class="col-md-8">
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong>
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">
+                        {% include "generic_form.html" with action_name="Send Revelation" %}
+                    </form>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="panel panel-primary">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Current Date / Time</div>
+
+                        <div class="panel-body">
+                            <h4>{% now "Y-m-d / H:i" %} - US/Central</h4>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-danger">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Warning</div>
+
+                        <div class="panel-body">
+                            <p>
+                                <strong>
+                                    - Anonymous could only live for 100 days
+                                    after the revelation date is reached.
+                                </strong>
+                            </p>
+
+                            <p>
+                                <strong>
+                                    - Posts can be deleted only after
+                                    the "revelation date" is reached by auth
+                                    users.
+                                </strong>
+                            </p>
+
+                            <p>
+                                <strong>
+                                    - Posts cannot be edited after sent.
+                                </strong>
+                            </p>
+
+                            <p>
+                                - Revelations must happen in the future.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-success">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Rules</div>
+
+                        <div class="panel-body">
+                            <p>- Follow your country laws.</p>
+                            <p>- No spam!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} - Public Directory{% endblock %}
+
+{% block main %}
+
+    <div class="revelation-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Delete revelation</h1>
+                    </div>
+
+                    <img src="{% static 'img/ha.jpg' %}"
+                         class="img-responsive center-block"
+                         alt="Macdrugy Druglin">
+
+                    <br>
+
+                    <form class="text-center" method="post">
+                        {% csrf_token %}
+                        <p>
+                            <strong>
+                                Are you sure you want to delete "{{ object }}"?
+                            </strong>
+                        </p>
+                        <button type="submit" class="btn btn-danger">
+                            Yes, delete this forever!
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

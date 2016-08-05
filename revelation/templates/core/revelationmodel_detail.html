@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+    - {{ object.subject }} by {{ object.user|default_if_none:"Anon" }} at
+    {{ object.datetime|date }}
+{% endblock %}
+
+{% block main %}
+
+<div class="revelation-main">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-2">
+                {% if object.user %}
+                    <h3>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <a href="{% url 'user-view' object.user.id %}">
+                            {{ object.user }}
+                        </a>
+                    </h3>
+
+                    <p>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        Joined {{ object.user.date_joined|date:"M Y" }}
+                    </p>
+                {% else %}
+                    <h3>
+                        <span class="glyphicon glyphicon-user"></span>
+                        Anon
+                    </h3>
+                {% endif %}
+            </div>
+
+            <div class="col-md-10">
+
+                <div class="page-header">
+                    <h1>{{ object.subject }}
+                        <small>
+                            <span class="glyphicon glyphicon-sunglasses"></span>
+                            Revealed {{ object.datetime|timesince }} ago
+                        </small>
+                    </h1>
+                </div>
+
+
+                <p>
+                    {% autoescape off %}
+                    {{ object.body|linebreaks }}
+                    {% endautoescape %}
+                </p>
+
+                <br>
+
+                <p class="small">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Created {{ object.created|date }} -
+                    {{ object.public|yesno:"Listed,Unlisted" }}
+
+                    {% if user.id == object.user.id and user.is_authenticated %}
+                        -
+                        <span class="glyphicon glyphicon-trash"></span>
+                        <a href="{% url 'revelation-delete' object.id %}">
+                            Delete
+                        </a>
+                    {% endif %}
+                </p>
+
+
+                {% include 'social/share.html' %}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

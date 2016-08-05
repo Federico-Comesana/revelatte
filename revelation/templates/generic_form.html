@@ -1,0 +1,15 @@
+{% csrf_token %}
+
+{% include "generic_form_fields.html" %}
+
+<div class="form-group">
+    <div class="col-sm-4 col-sm-offset-5">
+        <button id="action-btn" class="btn btn-primary" type="submit">
+            {% if not action_name %}
+                Save changes
+            {% else %}
+                {{ action_name }}
+            {% endif %}
+        </button>
+    </div>
+</div>

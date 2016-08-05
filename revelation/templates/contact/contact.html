@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+
+    <div class="revelation-main">
+
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2>Contact Information</h2>
+
+                    <h3>To report abuse, send feedback or try to buy this site,
+                        just send an email to:</h3>
+
+                    <img src="{% static 'img/fckspam.gif' %}"
+                         class="img-responsive"
+                         alt="Cinque Terre">
+
+                    <p>We will contact you as soon as possible. Thanks!</p>
+
+
+                    <h2>Site under development</h2>
+
+                    <p>A plain Bootsrap site? Yes, the site is under development
+                        and will look better as soon as we finish coding the
+                        main functionalities. Special thanks go to the reddit
+                        <a href="https://reddit.com/r/startups">/r/startups</a>
+                        community for helping out with the whole conception
+                        process.</p>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}
